@@ -1,0 +1,140 @@
+<!--
+  Generated template for the RegistarPonte page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>Registar Ponte</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list>
+        <ion-item>
+            <ion-label color="primary" floating>Nome da Ponte</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label color="primary" floating>Ano de Construção</ion-label>
+            <ion-input type="number"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label color="primary">Tipo de Ponte</ion-label>
+            <ion-select [(ngModel)]="tipo">
+                <ion-option value="flutuante">Flutuante</ion-option>
+                <ion-option value="pedonal">Pedonal</ion-option>
+                <ion-option value="bailley">Bailley</ion-option>
+                <ion-option value="teste">Teste</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label color="primary">Tipo de Obstáculo</ion-label>
+            <ion-select [(ngModel)]="obstaculo_tipo">
+                <ion-option value="rio">Rio</ion-option>
+                <ion-option value="corrente">Corrente</ion-option>
+            </ion-select>
+        </ion-item>
+
+
+        <ion-item>
+            <ion-label color="primary">Loc. do Obstáculo</ion-label>
+            <ion-select [(ngModel)]="obstaculo_loc">
+                <ion-option value="baixo">Por Baixo</ion-option>
+            </ion-select>
+        </ion-item>
+
+
+        <ion-item>
+            <ion-label color="primary">Estado da Ponte</ion-label>
+            <ion-select [(ngModel)]="estado_ponte">
+                <ion-option value="bom">Bom</ion-option>
+                <ion-option value="degradado">Degradado</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label color="primary" stacked>Latitute Inicio</ion-label>
+            <ion-input [(ngModel)]="lat" type="email" placeholder="Email Input"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label color="primary" stacked>Longitude Inicio</ion-label>
+            <ion-input [(ngModel)]="lng" type="email" placeholder="Email Input"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label color="primary" stacked>Latitute Fim</ion-label>
+            <ion-input [(ngModel)]="lat" type="email" placeholder="Email Input"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label color="primary" stacked>Longitude Fim</ion-label>
+            <ion-input [(ngModel)]="lng" type="email" placeholder="Email Input"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label color="primary">Distrito</ion-label>
+            <ion-select [(ngModel)]="distrito">
+                <ion-option value="baixo">Chibuto</ion-option>
+                <ion-option value="baixo">Boane</ion-option>
+                <ion-option value="baixo">Dondo</ion-option>
+                <ion-option value="baixo">Machanga</ion-option>
+                <ion-option value="baixo">Maxixe</ion-option>
+                <ion-option value="baixo">Nacala</ion-option>
+
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label color="primary">Estrada</ion-label>
+            <ion-select [(ngModel)]="estrada">
+                <ion-option value="baixo">EN1</ion-option>
+                <ion-option value="baixo">EN32</ion-option>
+                <ion-option value="baixo">EN4</ion-option>
+                <ion-option value="baixo">EN23</ion-option>
+                <ion-option value="baixo">Municipal</ion-option>
+                <ion-option value="baixo">EN6</ion-option>
+            </ion-select>
+        </ion-item>
+
+
+        <ion-item>
+            <button (click)="capturarImg()" ion-button>Imagem Principal</button>
+        </ion-item>
+
+        <ion-item>
+            <button ion-button>Imagem Sul</button>
+        </ion-item>
+
+        <ion-item>
+            <button ion-button>Imagem Norte</button>
+        </ion-item>
+
+        <ion-item>
+            <button ion-button>Imagem Este</button>
+        </ion-item>
+
+        <ion-item>
+            <button ion-button>Imagem Oeste</button>
+        </ion-item>
+
+        <ion-item>
+            <ion-textarea placeholder="Introduza uma descrição"></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+            <button ion-button block>Gravar</button>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

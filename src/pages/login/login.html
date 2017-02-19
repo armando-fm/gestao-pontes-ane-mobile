@@ -1,0 +1,42 @@
+<!--
+  Generated template for the Login page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>SGP</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+        <form>
+            <ion-card-header>
+                Login
+            </ion-card-header>
+
+            <ion-card-content>
+                <ion-list>
+
+                    <ion-item>
+                        <ion-label floating>E-mail</ion-label>
+                        <ion-input #email type="email"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label floating>Password</ion-label>
+                        <ion-input #password type="password"></ion-input>
+                    </ion-item>
+
+                </ion-list>
+
+                <div padding>
+                    <button ion-button block icon-right (click)="login(email.value, password.value)">Entrar <ion-icon name="send"></ion-icon></button>
+                </div>
+            </ion-card-content>
+        </form>
+    </ion-card>
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-menu [content]="content" color="primary">
+
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>SGP</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+        <button ion-item *ngIf="auth.user" color="secondary">
+            {{auth.user.name}}
+        </button>
+        <img src="assets/img/ponte-ane.jpg" />
+
+        <ion-list>
+            <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
