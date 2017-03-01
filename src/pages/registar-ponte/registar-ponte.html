@@ -16,97 +16,246 @@
 
 <ion-content padding>
 
-    <ion-list>
-        <ion-item>
-            <ion-label color="primary" floating>Nome da Ponte</ion-label>
-            <ion-input></ion-input>
-        </ion-item>
-
-        <ion-item>
-            <ion-label color="primary" floating>Ano de Construção</ion-label>
-            <ion-input type="number"></ion-input>
-        </ion-item>
-
-        <ion-item>
-            <ion-label color="primary">Tipo de Ponte</ion-label>
-            <ion-select [(ngModel)]="tipo">
-                <ion-option value="flutuante">Flutuante</ion-option>
-                <ion-option value="pedonal">Pedonal</ion-option>
-                <ion-option value="bailley">Bailley</ion-option>
-                <ion-option value="teste">Teste</ion-option>
-            </ion-select>
-        </ion-item>
-
-        <ion-item>
-            <ion-label color="primary">Tipo de Obstáculo</ion-label>
-            <ion-select [(ngModel)]="obstaculo_tipo">
-                <ion-option value="rio">Rio</ion-option>
-                <ion-option value="corrente">Corrente</ion-option>
-            </ion-select>
-        </ion-item>
+    <ion-grid>
+        <ion-list>
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item>
+                        <ion-label color="primary" floating>Nome da Ponte</ion-label>
+                        <ion-input #nome_ponte></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
 
 
-        <ion-item>
-            <ion-label color="primary">Loc. do Obstáculo</ion-label>
-            <ion-select [(ngModel)]="obstaculo_loc">
-                <ion-option value="baixo">Por Baixo</ion-option>
-            </ion-select>
-        </ion-item>
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item>
+                        <ion-label color="primary" floating>Ano de Construção</ion-label>
+                        <ion-input type="number" #ano_construcao></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item>
+                        <ion-label *ngIf="tipos" color="primary">Tipo de Ponte</ion-label>
+                        <ion-select [(ngModel)]="tipo_id">
+                            <ion-option *ngFor="let tipo of tipos" [value]="tipo.id">{{tipo.designacao_tipo}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item>
+                        <ion-label color="primary">Tipo de Obstáculo</ion-label>
+                        <ion-select [(ngModel)]="obstaculo_tipo">
+                            <ion-option value="rio">Rio</ion-option>
+                            <ion-option value="corrente">Corrente</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item>
+                        <ion-label color="primary">Loc. do Obstáculo</ion-label>
+                        <ion-select [(ngModel)]="obstaculo_loc">
+                            <ion-option value="baixo">Por Baixo</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item>
+                        <ion-label color="primary">Estado da Ponte</ion-label>
+                        <ion-select [(ngModel)]="estado_ponte">
+                            <ion-option value="bom">Bom</ion-option>
+                            <ion-option value="degradada">Degradada</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item>
+                        <ion-label color="primary" stacked>Latitute Inicio</ion-label>
+                        <ion-input [(ngModel)]="lat_inicio" type="number"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col width-90>
+                    <button ion-button small icon-right (click)="getLatInicio()">
+                        Detectar
+                        <ion-icon name="locate"></ion-icon>
+                    </button>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item>
+                        <ion-label color="primary" stacked>Longitude Inicio</ion-label>
+                        <ion-input [(ngModel)]="lng_inicio" type="number"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col width-90>
+                    <button ion-button small icon-right (click)="getLngInicio()">
+                        Detectar
+                        <ion-icon name="locate"></ion-icon>
+                    </button>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item>
+                        <ion-label color="primary" stacked>Latitute Fim</ion-label>
+                        <ion-input [(ngModel)]="lat_fim" type="number"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col width-90>
+                    <button ion-button small icon-right (click)="getLatFim()">
+                        Detectar
+                        <ion-icon name="locate"></ion-icon>
+                    </button>
+                </ion-col>
+            </ion-row>
 
 
-        <ion-item>
-            <ion-label color="primary">Estado da Ponte</ion-label>
-            <ion-select [(ngModel)]="estado_ponte">
-                <ion-option value="bom">Bom</ion-option>
-                <ion-option value="degradado">Degradado</ion-option>
-            </ion-select>
-        </ion-item>
 
-        <ion-item>
-            <ion-label color="primary" stacked>Latitute Inicio</ion-label>
-            <ion-input [(ngModel)]="lat" type="email" placeholder="Email Input"></ion-input>
-        </ion-item>
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item>
+                        <ion-label color="primary" stacked>Longitude Fim</ion-label>
+                        <ion-input [(ngModel)]="lng_fim" type="number"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
 
-        <ion-item>
-            <ion-label color="primary" stacked>Longitude Inicio</ion-label>
-            <ion-input [(ngModel)]="lng" type="email" placeholder="Email Input"></ion-input>
-        </ion-item>
+            <ion-row>
+                <ion-col width-90>
+                    <button ion-button small (click)="getLngFim()" icon-right>
+                        Detectar
+                        <ion-icon name="locate"></ion-icon>
+                    </button>
+                </ion-col>
+            </ion-row>
 
-        <ion-item>
-            <ion-label color="primary" stacked>Latitute Fim</ion-label>
-            <ion-input [(ngModel)]="lat" type="email" placeholder="Email Input"></ion-input>
-        </ion-item>
 
-        <ion-item>
-            <ion-label color="primary" stacked>Longitude Fim</ion-label>
-            <ion-input [(ngModel)]="lng" type="email" placeholder="Email Input"></ion-input>
-        </ion-item>
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item *ngIf="distritos">
+                        <ion-label color="primary">Distrito</ion-label>
+                        <ion-select [(ngModel)]="distrito_id">
+                            <ion-option *ngFor="let distrito of distritos" [value]="distrito.id">{{distrito.nome_distrito}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
 
-        <ion-item>
-            <ion-label color="primary">Distrito</ion-label>
-            <ion-select [(ngModel)]="distrito">
-                <ion-option value="baixo">Chibuto</ion-option>
-                <ion-option value="baixo">Boane</ion-option>
-                <ion-option value="baixo">Dondo</ion-option>
-                <ion-option value="baixo">Machanga</ion-option>
-                <ion-option value="baixo">Maxixe</ion-option>
-                <ion-option value="baixo">Nacala</ion-option>
 
-            </ion-select>
-        </ion-item>
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item *ngIf="estradas">
+                        <ion-label color="primary">Estrada</ion-label>
+                        <ion-select [(ngModel)]="estrada_id">
+                            <ion-option *ngFor="let estrada of estradas" [value]="estrada.id">{{estrada.nome_estrada}}</ion-option>
+                        </ion-select>
+                    </ion-item>
 
-        <ion-item>
-            <ion-label color="primary">Estrada</ion-label>
-            <ion-select [(ngModel)]="estrada">
-                <ion-option value="baixo">EN1</ion-option>
-                <ion-option value="baixo">EN32</ion-option>
-                <ion-option value="baixo">EN4</ion-option>
-                <ion-option value="baixo">EN23</ion-option>
-                <ion-option value="baixo">Municipal</ion-option>
-                <ion-option value="baixo">EN6</ion-option>
-            </ion-select>
-        </ion-item>
+                </ion-col>
+            </ion-row>
 
+
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item>
+                        <button (click)="capturarImg()" ion-button icon-right>
+                            Imagem Principal
+                            <ion-icon name="camera"></ion-icon>
+                        </button>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item>
+                        <button (click)="capturarImg()" ion-button icon-right>
+                            Imagem a Sul
+                            <ion-icon name="camera"></ion-icon>
+                        </button>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item>
+                        <button (click)="capturarImg()" ion-button icon-right>
+                            Imagem a Norte
+                            <ion-icon name="camera"></ion-icon>
+                        </button>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item>
+                        <button (click)="capturarImg()" ion-button icon-right>
+                            Imagem a Este
+                            <ion-icon name="camera"></ion-icon>
+                        </button>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item>
+                        <button (click)="capturarImg()" ion-button icon-right>
+                            Imagem a Oeste
+                            <ion-icon name="camera"></ion-icon> 
+                        </button>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+
+
+            <ion-row>
+                <ion-col width-90>
+                    <ion-item>
+                        <button ion-button block icon-right (click)="gravarPonte(nome_ponte.value, ano_construcao.value, lat_inicio,lng_inicio,lat_fim,lng_fim, tipo_obstaculo, loc_obstaculo, estado_ponte, distrito_id, estrada_id, tipo_id)">
+                            Gravar
+                            <ion-icon name="send"></ion-icon>    
+                        </button>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+        </ion-list>
+    </ion-grid>
+
+    <!--<ion-list>
+            
 
         <ion-item>
             <button (click)="capturarImg()" ion-button>Imagem Principal</button>
@@ -135,6 +284,6 @@
         <ion-item>
             <button ion-button block>Gravar</button>
         </ion-item>
-    </ion-list>
+    </ion-list>-->
 
 </ion-content>

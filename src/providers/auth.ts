@@ -13,36 +13,43 @@ import { Storage } from '@ionic/storage';
 */
 @Injectable()
 export class Auth {
-  public url = 'https://sgp-ane.herokuapp.com';
+  private url = 'https://sgp-ane.herokuapp.com';
   public user: any;
+  public token: any;
+  public headers = new Headers();
 
 
   constructor(public http: Http, public storage: Storage) {
     console.log('Hello Auth Provider');
-    this.storage.get('user').then((valor) =>{
-        this.user = valor;
-    });
+
+        this.storage.get('user').then((valor) =>{
+                                this.user = valor;
+                            });
+
+        this.storage.get('token').then((valor) =>{
+                                this.token = valor;
+                            });
   }
 
 
 
   public login(email: string, password: string): Observable <any> {
 
-        let header = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+        this.headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
         let body = 'email=' + email + '&password=' + password;
 
-        return this.http.post(this.url+'/api/auth', body, {headers: header})
-            .map((response: Response) => {
-                // login successful if there's a jwt token in the response
-                if (response.json().accessToken) {
-                    
-                    // return to indicate successful login
-                    return response.json();
-                } else {
-                    // return false to indicate failed login
-                    return null;
-                }
-            });
+        return this.http.post(this.url+'/api/auth', body, {headers: this.headers})
+                        .map((response: Response) => {
+                            // login successful if there's a jwt token in the response
+                            if (response.json().accessToken) {
+                                
+                                // return to indicate successful login
+                                return response.json();
+                            } else {
+                                // return false to indicate failed login
+                                return null;
+                            }
+                        });
     }
 
 
@@ -51,14 +58,15 @@ export class Auth {
         this.user = valor;
         });
 
+        this.storage.get('token').then((valor) =>{
+        this.token = valor;
+        });
 
         if(this.user != null){
             return true;
         }
 
         return false
-    }
-
-    
+    } 
 
 }

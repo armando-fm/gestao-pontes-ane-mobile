@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button menuToggle *ngIf="!ponteSelecionada">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>Ponte {{ponteSelecionada.nome_ponte}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+
+    <ion-card>
+        <img src="assets/img/ponte-ane.jpg" />
+        <div class="card-title">Ponte {{ponteSelecionada.nome_ponte}}</div>
+    </ion-card>
+
+    <ion-list *ngIf="ponteSelecionada">
+        <ion-item>
+            <b>Nome: </b>{{ponteSelecionada.nome_ponte}}
+        </ion-item>
+        <ion-item>
+            <b>Tipo: </b>{{ponteSelecionada.tipo.designacao_tipo}}
+        </ion-item>
+        <ion-item>
+            <b>Ano de Construção: </b>{{ponteSelecionada.ano_construcao}}
+        </ion-item>
+
+        <ion-item *ngIf="ponteSelecionada.estado_ponte == 'bom'">
+            <b>Estado: </b>
+            <ion-badge color="secondary">Bom</ion-badge>
+        </ion-item>
+
+        <ion-item *ngIf="ponteSelecionada.estado_ponte == 'degradada'">
+            <b>Estado: </b>
+            <ion-badge color="danger">Degradada</ion-badge>
+        </ion-item>
+
+        <ion-item>
+            <b>Provincia: </b>{{ponteSelecionada.distrito.provincia.nome_provincia}}
+        </ion-item>
+        <ion-item>
+            <b>Distrito: </b>{{ponteSelecionada.distrito.nome_distrito}}
+        </ion-item>
+        <ion-item>
+            <b>Estrada: </b>{{ponteSelecionada.estrada.nome_estrada}}
+        </ion-item>
+
+    </ion-list>
+</ion-content>

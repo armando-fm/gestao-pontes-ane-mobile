@@ -19,19 +19,26 @@
             </ion-card-header>
 
             <ion-card-content>
-                <ion-list>
-
-                    <ion-item>
-                        <ion-label floating>E-mail</ion-label>
-                        <ion-input #email type="email"></ion-input>
-                    </ion-item>
-
-                    <ion-item>
-                        <ion-label floating>Password</ion-label>
-                        <ion-input #password type="password"></ion-input>
-                    </ion-item>
-
-                </ion-list>
+                <ion-grid>
+                    <ion-list>
+                        <ion-row>
+                            <ion-col width-90>
+                                <ion-item>
+                                    <ion-label floating>E-mail</ion-label>
+                                    <ion-input #email type="email"></ion-input>
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col width-90>
+                                <ion-item>
+                                    <ion-label floating>Password</ion-label>
+                                    <ion-input #password type="password"></ion-input>
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
+                    </ion-list>
+                </ion-grid>
 
                 <div padding>
                     <button ion-button block icon-right (click)="login(email.value, password.value)">Entrar <ion-icon name="send"></ion-icon></button>
