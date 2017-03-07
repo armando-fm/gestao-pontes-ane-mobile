@@ -6,44 +6,47 @@
 -->
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-title>SGP</ion-title>
+        <ion-title class="titulo">LOGIN</ion-title>
     </ion-toolbar>
 </ion-header>
 
 
 <ion-content padding>
-    <ion-card>
-        <form>
-            <ion-card-header>
-                Login
-            </ion-card-header>
+    <form>
+        <ion-grid>
+            <ion-list>
+                <ion-row>
+                    <ion-col width-90>
+                        <ion-item>
+                            <ion-label floating>E-mail</ion-label>
+                            <ion-input #email type="email"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col width-90>
+                        <ion-item>
+                            <ion-label floating>Password</ion-label>
+                            <ion-input #password type="password"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
 
-            <ion-card-content>
-                <ion-grid>
-                    <ion-list>
-                        <ion-row>
-                            <ion-col width-90>
-                                <ion-item>
-                                    <ion-label floating>E-mail</ion-label>
-                                    <ion-input #email type="email"></ion-input>
-                                </ion-item>
-                            </ion-col>
-                        </ion-row>
-                        <ion-row>
-                            <ion-col width-90>
-                                <ion-item>
-                                    <ion-label floating>Password</ion-label>
-                                    <ion-input #password type="password"></ion-input>
-                                </ion-item>
-                            </ion-col>
-                        </ion-row>
-                    </ion-list>
-                </ion-grid>
+                <ion-row>
+                    <ion-col width-90>
+                        <ion-item>
+                            <ion-label>
+                                Lembrar de Mim
+                            </ion-label>
+                            <ion-toggle toggle-class="toggle-positive" id="page-toggle3"></ion-toggle>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
 
-                <div padding>
-                    <button ion-button block icon-right (click)="login(email.value, password.value)">Entrar <ion-icon name="send"></ion-icon></button>
-                </div>
-            </ion-card-content>
-        </form>
-    </ion-card>
+            </ion-list>
+        </ion-grid>
+        <div padding>
+            <button ion-button block icon-right (click)="login(email.value, password.value)">Entrar <ion-icon name="send"></ion-icon></button>
+        </div>
+    </form>
 </ion-content>

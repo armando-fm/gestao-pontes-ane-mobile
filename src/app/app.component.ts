@@ -14,7 +14,7 @@ import {RegistarPontePage} from '../pages/registar-ponte/registar-ponte';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // make HelloIonicPage the root (or first) page
+  // make LoginPage the root (or first) page
   rootPage: any = LoginPage;
   pages: Array<{title: string, component: any}>;
   user : any;
